@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useToggle from '../../hooks/useToggle';
+import s from './EditableItem.css';
 
 const EditableItem = ({ label, initialValue }) => {
     const [value, setValue] = useState(initialValue);
@@ -10,7 +11,7 @@ const EditableItem = ({ label, initialValue }) => {
     });
 
     return (
-        <>
+        <div className={s.container}>
             {editorVisible ? (
                 <label>
                     {label}
@@ -24,8 +25,8 @@ const EditableItem = ({ label, initialValue }) => {
             ) : (
                 <span>{value}</span>
             )}
-            <button type="button" onClick={toggleEditor}>{editorVisible ? 'Done' : 'Edit'}</button>
-        </>
+            <button className={s.button} type="button" onClick={toggleEditor}>{editorVisible ? 'Done' : 'Edit'}</button>
+        </div>
     );
 };
 
